@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  orangehrm:
+    image: orangehrm/orangehrm:latest
+    container_name: orangehrm
+    ports:
+      - "8080:80"
+    environment:
+      - ORANGEHRM_DB_HOST=db
+      - ORANGEHRM_DB_USER=orangehrm
+      - ORANGEHRM_DB_PASSWORD=orangehrm
+      - ORANGEHRM_DB_NAME=orangehrm
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mysql:5.7
+    container_name: orangehrm_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=orangehrm
+      - MYSQL_USER=orangehrm
+      - MYSQL_PASSWORD=orangehrm
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  db_data:
