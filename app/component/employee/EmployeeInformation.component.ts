@@ -11,7 +11,7 @@ export class EmployeeInformation extends BasePage {
         await this.container.waitFor({ state: 'visible' });
     }
 
-    async fillEmployeeName(name: string) {
+    async enterEmployeeName(name: string) {
         await this.emoployeeNameInput.fill(name);
     }
 

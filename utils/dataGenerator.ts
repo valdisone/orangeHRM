@@ -41,9 +41,9 @@ export function generateEmployeeData() {
     const employeeId = chance.string({ length: 6, pool: '0123456789' });
     return {
         firstName,
+        middleName,
         lastName,
         employeeId,
-        middleName,
         driverLicense,
         licenseExpiryDate,
         dateOfBirth

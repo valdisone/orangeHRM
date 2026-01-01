@@ -21,14 +21,28 @@ test('Add new employee', async ({ app, employeeData }) => {
 
 test("Search for existing employee", async ({ app }) => {
     await app.employeeList.clickPIM();
-    await app.employeeList.employeeInformation.expectLoaded();
-    await app.employeeList.employeeInformation.fillEmployeeName('Alvin Crawford');
+    await app.employeeList.employeeInformation.enterEmployeeName('Billy Nichols');
     await app.employeeList.employeeInformation.clickSearchButton();
     await app.employeeList.expectEmployeeNameInFirstRow('Alvin', 'Crawford');
 });
 
-test('Fill contact details for existing employee', async ({ app, employeeData }) => {
+test('Fill contact details for existing employee', async ({ app, employeeData, page }) => {
     await app.employeeList.clickPIM();
     await app.employeeList.clickRow(0);
-    await app.personalDetails.fillMiddleName(employeeData.middleName);
+    console.log(employeeData);
+    await app.personalDetails.enterDriverLicenseNumber(employeeData.driverLicense);
+    await app.personalDetails.enterLicenseExpiryDate(employeeData.licenseExpiryDate);
+    await app.personalDetails.selectNationality('American');
+    await app.personalDetails.selectMaritalStatus('Married');
+    await app.personalDetails.selectGender('Female');
+    await app.personalDetails.enterMiddleName(employeeData.middleName);
+    await app.personalDetails.enterDateOfBirth(employeeData.dateOfBirth);
+    await app.personalDetails.savePersonalDetails();
+    await app.personalDetails.expectMiddleName(employeeData.middleName);
+    await app.personalDetails.expectDriverLicense(employeeData.driverLicense);
+    await app.personalDetails.expectLicenseExpiryDate(employeeData.licenseExpiryDate);
+    await app.personalDetails.expectNationality('American');
+    await app.personalDetails.expectMaritalStatus('Married');
+    await app.personalDetails.expectDateOfBirth(employeeData.dateOfBirth);
+    await app.personalDetails.expectGender();
 });

@@ -11,6 +11,7 @@ export class EmployeeListPage extends BasePage {
 
     async clickPIM() {
         await this.pim.click();
+        await this.employeeInformation.expectLoaded();
     }
 
     async clickAddEmployee() {
