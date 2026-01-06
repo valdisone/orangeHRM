@@ -1,6 +1,4 @@
 import { hrmTest as test} from '../fixture';
-import { expect } from '@playwright/test';
-import { EmployeeListPage } from '../pages/PIM/EmployeeListPage';
 
 test('Add new employee', async ({ app, employeeData }) => {
     await app.employeeList.clickPIM();
@@ -23,13 +21,12 @@ test("Search for existing employee", async ({ app }) => {
     await app.employeeList.clickPIM();
     await app.employeeList.employeeInformation.enterEmployeeName('Billy Nichols');
     await app.employeeList.employeeInformation.clickSearchButton();
-    await app.employeeList.expectEmployeeNameInFirstRow('Alvin', 'Crawford');
+    await app.employeeList.expectEmployeeNameInFirstRow('Billy', 'Nichols');
 });
 
 test('Fill contact details for existing employee', async ({ app, employeeData, page }) => {
     await app.employeeList.clickPIM();
     await app.employeeList.clickRow(0);
-    console.log(employeeData);
     await app.personalDetails.enterDriverLicenseNumber(employeeData.driverLicense);
     await app.personalDetails.enterLicenseExpiryDate(employeeData.licenseExpiryDate);
     await app.personalDetails.selectNationality('American');

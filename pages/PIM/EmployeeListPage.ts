@@ -7,7 +7,7 @@ export class EmployeeListPage extends BasePage {
     private addButton = this.page.getByRole('button', { name: 'Add' });
     private pim = this.page.locator('//span[text()="PIM"]');
     private employeeTable = this.page.locator('.oxd-table-body');
-    readonly tableRows = this.employeeTable.locator('.oxd-table-card');
+    private tableRows = this.employeeTable.locator('.oxd-table-card');
 
     async clickPIM() {
         await this.pim.click();

@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { BasePage } from '../BasePage';
 
 export class PersonalDetailsPage extends BasePage {
-    private container = this.page.locator('//div[@class="orangehrm-edit-employee"]')
+    private container = this.page.locator('//div[@class="orangehrm-edit-employee"]');
     private personalDetailsHeader = this.container.locator('//h6[text()="Personal Details"]');
     private employeeName = this.container.locator('//div[@class="orangehrm-edit-employee-name"]/h6');
     private firstNameInput = this.container.getByPlaceholder('First Name');
@@ -15,7 +15,7 @@ export class PersonalDetailsPage extends BasePage {
     private nationalitySelect = this.container.locator('//label[text()="Nationality"]/../..//div[@class="oxd-select-wrapper"]');
     private maritalStatusSelect = this.container.locator('//label[text()="Marital Status"]/../..//div[@class="oxd-select-wrapper"]');
     private dateOfBirthInput = this.container.locator('//label[text()="Date of Birth"]/../..//input');
-    public saveButton = this.page.getByRole('button', { name: 'Save' });
+    private saveButton = this.page.getByRole('button', { name: 'Save' });
     private successToast = this.page.getByText('Successfully Updated');
     
     async expectLoaded() {
