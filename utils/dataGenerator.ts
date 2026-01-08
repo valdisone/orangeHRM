@@ -19,8 +19,8 @@ export function getRandomFutureDate(): string {
 export function getRandomAdultBirthDate(): string {
     const today = dayjs();
 
-    const maxDate = today.subtract(18, 'year');   // не моложе 18
-    const minDate = today.subtract(70, 'year'); // условный максимум возраста
+    const maxDate = today.subtract(18, 'year');
+    const minDate = today.subtract(70, 'year');
 
     const minTimestamp = minDate.valueOf();
     const maxTimestamp = maxDate.valueOf();
